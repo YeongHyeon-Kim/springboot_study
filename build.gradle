@@ -6,6 +6,7 @@ buildscript {
     repositories {
         mavenCentral()
         jcenter()
+        //라이브러리 간단하게 업로드, mavenCentral에도 업로드할수있도록 자동화 할수있음
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -22,26 +23,24 @@ plugins {
 repositories {
     mavenCentral()
     //예전부터 많이 사용하는 저장소이지만 많은 과정과 설정이 필요함
-    jcenter()
-    //라이브러리 간단하게 업로드, mavenCentral에도 업로드할수있도록 자동화 할수있음
+
 }
 
-group = 'org.example'
+group = 'com.study'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 //프로젝트 개발에 필요한 의존성들을 선언하는 곳
 //특정버전을 지정하지 않아야만 맨위에 작성한 버젼을 따라가게된다.
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
 
-
-    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.projectlombok:lombok'
+    testImplementation 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
 }
 
-
-test {
+test { // (2)
     useJUnitPlatform()
 }
