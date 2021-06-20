@@ -1,5 +1,7 @@
 package com.study.springboot.web;
 
+import com.study.springboot.config.auth.LoginUser;
+import com.study.springboot.config.auth.SessionUser;
 import com.study.springboot.service.PostsService;
 import com.study.springboot.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.servlet.http.HttpSession;
+
 @RequiredArgsConstructor
 @Controller
 public class IndexController {
@@ -15,9 +19,16 @@ public class IndexController {
 	private final PostsService postsService;
 
 	@GetMapping("/")
-	public String index(Model model) {
+	public String index(Model model, @LoginUser SessionUser user) {
 		model.addAttribute("posts",postsService.findAllDesc());
-		return "index";
+
+		//LoginUser annotation 작성 후 필요없어진 코드
+		//SessionUser user = (SessionUser) httpSession.getAttribute("user");
+		// 앞서 작성된
+		if (user !=null){
+			model.addAttribute("userName", user.getName());
+		}
+ 		return "index";
 	}
 
 	@GetMapping("/posts/save")
