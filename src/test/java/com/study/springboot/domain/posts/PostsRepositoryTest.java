@@ -44,7 +44,6 @@ public class PostsRepositoryTest {
 											.build());
 
 
-
 		//when
 		List<Posts> postsList = postsRepository.findAll();
 		//테이블에 있는 모든 데이터를 조회하는 메소드이다.

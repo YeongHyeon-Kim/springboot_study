@@ -16,7 +16,12 @@
                 {{^userName}}
                     <!-- 해당값이 존재하지 않을 경우에는 ^를 사용한다
                     여기선느 userName이 없다면 로그인 버튼을 노출시키도록 구성함-->
+                    <!-- 구글로그인-->
                     <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+                    <!-- 네이버 로그인 -->
+                    <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a>
+                    <!-- /oauth2/authorization/ 이 값은 application-oauth.properties에 등록한
+                     redirect-uri값에 자동으로 맞춰 등록된다.-->
                 {{/userName}}
             </div>
         </div>

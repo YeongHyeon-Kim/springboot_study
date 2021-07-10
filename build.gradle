@@ -55,8 +55,18 @@ dependencies {
 
     implementation 'org.springframework.session:spring-session-jdbc'
 
+
+    testImplementation 'org.springframework.security:spring-security-test'
+    //Expecting:
+    // <302 FOUND>
+    //to be equal to:
+    // <200 OK>
+    //but was not.
+    // 이러한 오류가 뜬 이유가 인증되지 않은 사용자의 요청은 이동시켜서 뜨는 오류인데
+    //API요청을 임의로 인증된 사용자를 추가하여 API만 테스트 해볼수 있게 지원해주는 도구이다.
 }
 
 test { // (2)
     useJUnitPlatform()
+
 }
